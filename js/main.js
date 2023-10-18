@@ -1,24 +1,19 @@
 const app = Vue.createApp({
     data: () => ({
-      newItem: '',
-      todos: []
+        km: 0,
+        m: 0,
     }),
-    methods: {
-      addItem: function(event) {
-        // console.log('Clicked!')
-        if (this.newItem == '') return
-        let todo = {
-            item: this.newItem,
-            isDone: false
+    watch: {
+        km: function (value){
+            console.log(value)
+            this.km = value
+            this.m = value * 1000
+        },
+        m: function (value){
+            console.log(value)
+            this.m = value
+            this.km = value / 1000
         }
-        this.todos.push(todo)
-        this.newItem = ''
-      },
-      deleteItem: function(index){
-        // console.log('Clicked!')
-        // console.log(index)
-        this.todos.splice(index, 1)
-      }
     }
   })
   app.mount('#app')
